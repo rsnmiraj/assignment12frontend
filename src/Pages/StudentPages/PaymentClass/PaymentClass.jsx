@@ -12,8 +12,8 @@ const PaymentClass = () => {
     const total = null;
     const price =60
     return (
-        <div>
-             <h2 className="text-3xl"> Teka o teka tumi uira uira aso...</h2>
+        <div className="flex justify-center items-center w-full">
+          
             <Elements stripe={stripePromise}>
                 <CheckoutForm classid={classid} cart={cart} price={price}></CheckoutForm>
             </Elements>

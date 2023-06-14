@@ -52,22 +52,38 @@ const AddAClass = ({setTitle}) => {
         for (let i = 0; i < countFile; i++) {
           formData.append("image", e.target.files[i]);
           
-          axios({
-            method: 'post',
-            url: 'https://api.imgbb.com/1/upload?expiration=0&key=89cd126a18f125ea9e7f8256dcb15acb',
-            data: formData,
-            headers: { 'Content-Type': 'multipart/form-data' },
-          })
-            .then((response) => {
-              console.log(response.data);
-              setUploadedImageUrl(response.data.data.display_url)
-              setimguploadingmessage(null) 
-              setProgresssending(false)
-            })
-            .catch((error) => {
-              setimguploadingmessage("Error") 
-              setProgresssending(false)
-            });
+          // axios({
+          //   method: 'post',
+          //   url: 'https://api.imgbb.com/1/upload?expiration=0&key=89cd126a18f125ea9e7f8256dcb15acb',
+          //   data: formData,
+          //   headers: { 'Content-Type': 'multipart/form-data' },
+          // })
+          //   .then((response) => {
+          //     console.log(response.data);
+          //     setUploadedImageUrl(response.data.data.display_url)
+          //     setimguploadingmessage(null) 
+          //     setProgresssending(false)
+          //   })
+          //   .catch((error) => {
+          //     setimguploadingmessage("Error") 
+          //     setProgresssending(false)
+          //   });
+          fetch('https://api.imgbb.com/1/upload?expiration=0&key=89cd126a18f125ea9e7f8256dcb15acb', {
+  method: 'POST',
+  body: formData,
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    setUploadedImageUrl(data.data.display_url);
+    setimguploadingmessage(null);
+    setProgresssending(false);
+  })
+  .catch((error) => {
+    setimguploadingmessage('Error');
+    setProgresssending(false);
+  });
+
         }
         
       }

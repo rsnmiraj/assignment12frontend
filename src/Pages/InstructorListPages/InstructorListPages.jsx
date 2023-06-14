@@ -18,7 +18,7 @@ const InstructorListPages = ({setTitle }) => {
     const [progresssending, setprogresssending] = useState(false)
    
     useEffect(() => {
-        if (loading && user) {
+        if (loading) {
           setTitle("My Classes")
             axios.get(`/instructor/all`)
                 .then(response => {

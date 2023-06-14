@@ -120,11 +120,11 @@ const CheckoutForm = ({ cart, price,classid }) => {
                     }}
                 />
                 <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
-                    Pay {classid}
+                    Pay Now
                 </button>
             </form>
             {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
-            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}
+            {transactionId && <p className="text-green-500 text-2xl">Transaction complete And transactionId: {transactionId}</p>}
         </>
     );
 };

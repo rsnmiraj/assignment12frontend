@@ -10,18 +10,21 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 import Header from '../../Layout/Header/Header';
 import { useEffect } from 'react';
+import { useForm } from "react-hook-form"
 const LoginPage = ({setTitle}) => {
-
+const {register , handleSubmit} = useForm()
   const [message , setMessage] = useState("");
    
  useEffect(() => {
   setTitle("Login")
  }, []);
   const auth = getAuth(app); 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
- let email = e.target.email.value
- let password = e.target.password.value
+    const handleSubmitbtn = (e)=>{
+        // e.preventDefault();
+//  let email = e.target.email.value
+//  let password = e.target.password.value
+ let email = e.email
+ let password = e.password
  signInWithEmailAndPassword( auth,email, password)
  .then((userCredential) => {
  
@@ -39,6 +42,7 @@ const LoginPage = ({setTitle}) => {
  });
     }
 
+   
  
     return (
         <>
@@ -49,10 +53,10 @@ const LoginPage = ({setTitle}) => {
       <Link to="/login" className="border-b-4 border-[#4406CB] py-2">Login</Link>
       <Link  to="/register" className="py-2 text-gray-500">Register Now</Link>
     </div>
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5 ">
+    <form onSubmit={handleSubmit(handleSubmitbtn)} className="flex flex-col gap-5 ">
       <input
         type="email"
-        name="email"
+        {...register("email")}
         id=""
         onChange={()=>setMessage("")}
         placeholder="Enter Your Email"
@@ -60,7 +64,7 @@ const LoginPage = ({setTitle}) => {
       />
       <input
         type="password"
-        name="password"
+        {...register("password")}
         id=""
         onChange={()=>setMessage("")}
         placeholder="Enter Password"

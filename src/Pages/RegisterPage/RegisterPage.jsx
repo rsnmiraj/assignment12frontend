@@ -10,8 +10,10 @@ import app from '../../firebase/firebase.config';
 import Header from '../../Layout/Header/Header';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { useForm } from "react-hook-form"
 import { AuthContext } from '../../Provider/AuthContextProvider';
 const RegisterPage = ({setTitle}) => {
+  const {register , handleSubmit} = useForm()
 const [message , setMessage] = useState("");
 const [pass , setPass] = useState(null);
 const { registerUser, user, logOut, loginUser, isLogged, setIsLogged , loading,userData, setUserData} = useContext(AuthContext);
@@ -24,11 +26,16 @@ useEffect(() => {
 }, []);
  
   const auth = getAuth(app); 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
- let email = e.target.email.value
- let password = e.target.password.value
- let cfpassword = e.target.cfpassword.value
+    const handleSubmitbtn = (e)=>{
+        // e.preventDefault();
+ let email = e.email
+ let password = e.password
+ let cfpassword = e.cfpassword
+ let name = e.name;
+let photoURL = e.image;
+//  let email = e.target.email.value
+//  let password = e.target.password.value
+//  let cfpassword = e.target.cfpassword.value
  
  if(password == "" || email ==""){
   setMessage("Password or email can't be empty")
@@ -47,8 +54,7 @@ useEffect(() => {
   setMessage("Password Must be more than 6")
 return ;
 }  
-let name = e.target.name.value;
-let photoURL = e.target.image.value;
+
 setUserData({
   name:name,
   email:email,
@@ -94,39 +100,40 @@ createUserWithEmailAndPassword(auth, email, password)
   
 
 
-<form  onSubmit={handleSubmit} className="flex flex-col gap-5 ">
+<form onSubmit={handleSubmit(handleSubmitbtn)} className="flex flex-col gap-5 ">
 <input
-        type="text"
-        name="name"
+        type="text" 
+        {...register("name")}
         id=""
         placeholder="Enter Your Name"
         className="p-2 rounded-lg text-black border"
       />
 <input
         type="text"
-        name="image"
+       
+        {...register("image")}
         id=""
         placeholder="Enter Your Photo Url"
         className="p-2 rounded-lg text-black border"
       />
       <input
         type="email"
-        name="email"
+        {...register("email")}
         id=""
         placeholder="Enter Your Email"
         className="p-2 rounded-lg text-black border" required
       />
       <input onChange={changeInputPassword}
         type="password"
-        name="password"
+      {...register("password")}
         id="password"
         placeholder="Enter Password"
         className="p-2 rounded-lg text-black border" required
       />
 
 <input onChange={changeInputPassword}
-        type="cfpassword"
-        name="cfpassword"
+        type="cfpassword" 
+        {...register("cfpassword")}
         id="cfpassword"
         placeholder="Confirm Password"
         className="p-2 rounded-lg text-black border" required

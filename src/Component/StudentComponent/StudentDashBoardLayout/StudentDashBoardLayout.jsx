@@ -39,10 +39,10 @@ theme="light"
                 </div>
                 <div className="px-6 py-6 text-white">
                   <Link
-                    to="/admin"
+                    to="/"
                     className="router-link-exact-active router-link-active"
                   >
-                  Dashboard
+                  Home
                   </Link>
                 </div>
                 {/**/}
@@ -59,6 +59,11 @@ theme="light"
                     <li className="mt-3">
                       <Link to="/student/class/enrolled" className="">
                    my Enrolled Class
+                      </Link>
+                    </li>
+                    <li className="mt-3">
+                      <Link to="/student/history/payment" className="">
+                 Payment History
                       </Link>
                     </li>
                    

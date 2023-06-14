@@ -266,7 +266,7 @@ theme="light"
 to="/login">Sign in</ActiveLink> 
 
 <Link to="/register"
-className="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
+className="hidden lg:inline group  items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
 
 >
 <span>
@@ -296,7 +296,7 @@ Get started <span className="hidden lg:inline">today</span>
   </label>
   <ul
     tabIndex={0}
-    className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52 bg-[#DCE2CB] right-0"
+    className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52 bg-white right-0 px-6 py-3 space-y-2"
   >
      <ActiveLink className="inline-block rounded-lg px-2 py-1 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                     to="/"> Home</ActiveLink>   

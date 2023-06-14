@@ -4,8 +4,9 @@ import axios from 'axios';
  
 import {Link} from 'react-router-dom'
 import { AuthContext } from '../../../Provider/AuthContextProvider';
-import Spinner from '../../../Component/Spinner/Spinner';
-const MyEnrolledClasses = ({setTitle }) => {
+ import Spinner from '../../../Component/Spinner/Spinner';
+
+const StudentPaymentHistory = ({setTitle }) => {
     const  { registerUser, user, logOut, loginUser,isLogged,setIsLogged }  = useContext(AuthContext);
     const  { toastPush}  = useContext(AuthContext);
    const [loading, setLoading] = useState(true)
@@ -18,7 +19,7 @@ const MyEnrolledClasses = ({setTitle }) => {
     useEffect(() => {
         if (loading && user) {
           setTitle("My Classes")
-            axios.get(`/enrolledclasses/${user.email}`)
+            axios.get(`/paymenthistory/${user.email}`)
                 .then(response => {
                     let data = response.data
                     setmyClassesData(data)
@@ -29,20 +30,6 @@ const MyEnrolledClasses = ({setTitle }) => {
         }
     }, []);
     
-//  const payButtonHandler = (e)=>{
-// if(user){
-//   let data ={
-//     classid:e,
-//     email:user.email,
-//     enrolled:false
-//   }
-//   axios.post("/select/class/",data )
-//   .then(response=>{
-//     console.log(response.data)
-//     toastPush("You've Selected Class")
-//   })
-// }
-//  }
  
 
  const deleteClassHandler = (id)=>{
@@ -81,12 +68,8 @@ let data = renderData.filter(e=>e._id!=id)
      <thead>
        <tr>
          <th>Class/Image</th>
-         <th>Instructor</th>
-         <th>Email</th>
          <th>Price</th>
-         <th>Available Seat</th>
-         <th>Total Enrolled</th>
-      
+          <th>Transactionid</th>
       
       
        </tr>
@@ -116,16 +99,12 @@ let data = renderData.filter(e=>e._id!=id)
              </div>
            </div>
          </td>
-         <td>{e.result[0].instructorname}</td>
-         <td>{e.result[0].instructoremail}</td>
+      
          <td>{e.result[0].price}</td>
-         <td>
-          {e.result[0].availableseat}
-          </td>
-          <td>
-          {e.result[0].enrolledstudents}
-          </td>
         
+          <td>
+          {e.transactionId}
+          </td>
           
           
          
@@ -144,12 +123,10 @@ let data = renderData.filter(e=>e._id!=id)
      <tfoot>
      <tr>
      <th>Class/Image</th>
-         <th>Instructor</th>
-         <th>Email</th>
+       
          <th>Price</th>
-         <th>Available Seat</th>
-         <th>Total Enrolled</th>
-    
+        
+         <th>Transactionid</th>
        
        </tr>
      </tfoot>
@@ -165,4 +142,5 @@ let data = renderData.filter(e=>e._id!=id)
         
     );
 }
-export default MyEnrolledClasses;
+
+export default StudentPaymentHistory;

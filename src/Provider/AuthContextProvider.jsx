@@ -56,7 +56,7 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     if(localStorage.getItem('access-token')){
       setToken(localStorage.getItem('access-token'))
-      // axios.defaults.headers.common['Authorization'] = 'Bearer ' +localStorage.getItem('access-token');
+     axios.defaults.headers.common['Authorization'] = 'Bearer ' +localStorage.getItem('access-token');
     }
     const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
       setUser(loggedInUser);
@@ -102,7 +102,7 @@ const AuthContextProvider = ({ children }) => {
           .then(data =>{ 
             setToken(data.data.token)
               localStorage.setItem('access-token', data.data.token)
-              // axios.defaults.headers.common['Authorization'] ='Bearer ' +data.data.token;
+               axios.defaults.headers.common['Authorization'] ='Bearer ' +data.data.token;
                setLoading(false);
           })
      

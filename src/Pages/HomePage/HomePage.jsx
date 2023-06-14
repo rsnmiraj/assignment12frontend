@@ -8,7 +8,7 @@ import PopularClassesComponent from '../../Component/HomePageComponents/PopularC
 import PopularInstructor from '../../Component/PopularInstructor/PopularInstructor';
  
 
- 
+import { Fade, Zoom,Slide } from "react-awesome-reveal";
 
  
 const HomePage = ({setTitle}) => {
@@ -32,23 +32,17 @@ const [toyData, setToyData] = useState(null);
 
 
  
+<Slide>
+<PopularClassesComponent/>
+</Slide>
 
- <PopularClassesComponent/>
 <PopularInstructor/>
-
- 
- <div className="container max-w-7xl mx-auto px-4 mt-12">
-        <div className="flex flex-wrap">
- 
- </div> </div>
- <PricingAdmission/>
-
-<InstrumentGallery/>
+ <Zoom>
+ <InstrumentGallery/>
     
-    <div className='grid grid-cols-3 px-12 gap-6'>
+ </Zoom>
 
-
-    </div>
+     
     </>
 
 

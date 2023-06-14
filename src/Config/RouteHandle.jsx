@@ -36,6 +36,7 @@ import InstructorDashBoard from '../Component/InstructorComponents/InstructorDas
 import DashBoard from '../Pages/DashBoard/DashBoard';
 import Test from '../Test';
 import InstructorPage from '../Pages/InstructorPage/InstructorPage';
+import StudentPaymentHistory from '../Pages/StudentPages/StudentPaymentHistory/StudentPaymentHistory';
 
 
 const RouteHandle = () => {
@@ -137,6 +138,10 @@ const RouteHandle = () => {
         {
           path: "/student/class/enrolled",
           element: <MyEnrolledClasses setTitle={setTitle} />,
+        },
+        {
+          path: "/student/history/payment",
+          element: <StudentPaymentHistory setTitle={setTitle} />,
         },
 
       ]

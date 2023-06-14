@@ -28,8 +28,8 @@ const Footer = () => {
 </footer> 
 <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
   <div className="items-center grid-flow-col">
-    <img className='w-16' src="assets/img/kidsport.png" alt="" />
-      <p>KidSports <br/>©Copyright KidSports Company Ltd.</p>
+    <img className='w-16' src="/assets/img/music.png" alt="" />
+      <p>SummerLearning <br/>©Copyright SummerLearning Company Ltd.</p>
   </div> 
   <div className="md:place-self-center md:justify-self-end">
     <div className="grid grid-flow-col gap-4">

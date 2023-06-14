@@ -22,7 +22,7 @@ const ManageClasses = ({setTitle}) => {
     useEffect(() => {
         if (loading && user) {
           setTitle("My Classes")
-            axios.get(`/classes/all`)
+            axios.get(`/admin/classes/all`)
                 .then(response => {
                     let data = response.data
                     setmyClassesData(data)
